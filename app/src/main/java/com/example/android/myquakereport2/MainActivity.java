@@ -15,6 +15,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,17 +59,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             progressBar.setVisibility(View.GONE);
             txtvEmptyState.setText("no internet connection");
         }
-//        if(earthquakes.isEmpty()) {
-//            recyclerView.setVisibility(View.GONE);
-//            txtvEmptyState.setVisibility(View.VISIBLE);
-//            txtvEmptyState.setText(R.string.empty_state_list);
-//        } else {
-//            txtvEmptyState.setVisibility(View.GONE);
-//            recyclerView.setVisibility(View.VISIBLE);
-//        }
-//        QuakeAsyncTask asyncTask = new QuakeAsyncTask();
-//        asyncTask.execute(USGS_REQUEST_URL);
-        
 
     }
 
@@ -98,7 +89,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Log.i(TAG, "onLoaderReset: ");
     }
 
-//    private class QuakeAsyncTask extends AsyncTask<String,Void,ArrayList<Earthquake>>{
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+       getMenuInflater().inflate(R.menu.main,menu);
+       return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+       int id = item.getItemId();
+       if(id == R.id.action_settings){
+           Intent settingsIntent = new Intent(this, SettingsActivity.class);
+           startActivity(settingsIntent);
+           return true;
+       }
+       return super.onOptionsItemSelected(item);
+    }
+    //    private class QuakeAsyncTask extends AsyncTask<String,Void,ArrayList<Earthquake>>{
 //
 //        @Override
 //        protected ArrayList<Earthquake> doInBackground(String... strings) {
