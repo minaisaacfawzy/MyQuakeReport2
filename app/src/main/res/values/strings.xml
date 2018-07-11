@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyQuakeReport2</string>
+    <string name="empty_state_list">No data availabe</string>
+</resources>
